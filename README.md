@@ -1,70 +1,106 @@
-# Getting Started with Create React App
+# Weather Dashboard
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+WeatherDashboard is a lightweight **React-based weather application** that displays real-time weather information for any city.  
+The project was built to practice frontend architecture, API integration, and UI state management.
 
-## Available Scripts
+The application consumes an external weather API and presents clean, structured weather data to the user.
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## Project Structure
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- /src  
+    - App.js  
+    - components/  
+        - SearchBox.jsx  
+        - WeatherCard.jsx  
+    - services/  
+        - weatherService.js  
+    - styles/  
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- /public  
+    - index.html  
+    - icons / assets (if any)
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Key Concepts
 
-### `npm run build`
+### Weather Search
+Users can:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Search for a city  
+- Fetch current weather (temperature, humidity, conditions, wind speed, etc.)  
+- Display a simple and responsive weather card  
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### API Integration
+The app communicates with a third-party weather provider (e.g. OpenWeatherMap).  
+All API configurations are handled through environment variables:
+```bash
+REACT_APP_WEATHER_API_KEY=<your_api_key>
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+`.env` is excluded from version control.
 
-### `npm run eject`
+### Component-based Architecture
+The UI is composed of small reusable components that handle:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- Input  
+- Weather display  
+- API state (loading/error)  
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### State Management
+State is handled using React built-in hooks (`useState`, `useEffect`)  
+and async API calls with `fetch` or `axios`.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Running the Project
 
-## Learn More
+Install dependencies:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+npm install
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+or:
 
-### Code Splitting
+```bash
+yarn install
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Start development server:
+```bash
+npm start
+```
 
-### Analyzing the Bundle Size
+The app will run on:
+```bash
+http://localhost:3000
+```
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Example Usage
+```bash
+import { getWeather } from "./services/weatherService";
 
-### Making a Progressive Web App
+getWeather("Oslo").then(data => {
+  console.log(data.temperature);
+});
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+---
 
-### Advanced Configuration
+## Requirements
+- Node.js (LTS recommended)
+- React
+- External weather API key
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+---
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Future Improvements
+- 5-day forecast
+- Temperature unit toggle (°C/°F)
+- Error states (invalid city, network issues)
+- Responsive layout improvements
+- Deployment on Netlify / Vercel / GitHub Pages
