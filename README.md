@@ -55,6 +55,24 @@ and async API calls with `fetch` or `axios`.
 
 ---
 
+## Example Usage
+```bash
+import { getWeather } from "./services/weatherService";
+
+getWeather("Oslo").then(data => {
+  console.log(data.temperature);
+});
+```
+
+---
+
+## Requirements
+- Node.js (LTS recommended)
+- React
+- External weather API key
+
+---
+
 ## Running the Project
 
 Install dependencies:
@@ -78,23 +96,6 @@ The app will run on:
 ```bash
 http://localhost:3000
 ```
----
-
-## Example Usage
-```bash
-import { getWeather } from "./services/weatherService";
-
-getWeather("Oslo").then(data => {
-  console.log(data.temperature);
-});
-```
-
----
-
-## Requirements
-- Node.js (LTS recommended)
-- React
-- External weather API key
 
 ---
 
